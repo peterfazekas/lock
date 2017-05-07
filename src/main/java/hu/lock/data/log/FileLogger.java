@@ -21,14 +21,13 @@ public class FileLogger implements DataLogger {
     @Override
     public void printAll(final List<String> lines) {
         try (PrintWriter log = new PrintWriter(new FileWriter(fileName))) {
-            lines.forEach(i -> print(log, i));
+            lines.forEach(i -> println(log, i));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void print(final PrintWriter log, final String line) {
+    private void println(final PrintWriter log, final String line) {
         log.println(line);
     }
 

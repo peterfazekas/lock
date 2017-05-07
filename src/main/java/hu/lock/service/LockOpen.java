@@ -1,13 +1,11 @@
 package hu.lock.service;
 
 /**
- * @author Peter_Fazekas on 2017.05.07..
- */
-
-/**
  * 6. feladat: Készítsen függvényt nyit néven az alábbi algoritmus alapján, amely a neki átadott két kódszámról
  * megállapítja, hogy ugyanazt a zárat nyitják-e! (A 239451 és a 017239 ugyanazt a zárat nyitja.)
  * A függvény két, legfeljebb 10 számjegyből álló karaktersorozathoz egy logikai értéket rendel.
+ *
+ * @author Peter_Fazekas on 2017.05.07..
  */
 class LockOpen {
 
@@ -19,14 +17,14 @@ class LockOpen {
     }
 
     public boolean open(final String code) {
-        return lengthCheck(code) && isMatch(code, codeDistance(code));
+        return lengthCheck(code) && isMatchAll(code, codeDistance(code));
     }
 
     public boolean lengthCheck(final String code) {
         return base.length() == code.length();
     }
 
-    private boolean isMatch(final String code, final int difference) {
+    private boolean isMatchAll(final String code, final int difference) {
         boolean match = true;
         for (int i = 1; i < base.length(); i++) {
             match = isMatch(code, difference, i) && match;

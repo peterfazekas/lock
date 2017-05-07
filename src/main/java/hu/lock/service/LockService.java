@@ -17,7 +17,6 @@ public class LockService {
     private final RandomCode random;
     private final LockOpen lockOpen;
 
-
     public LockService(final String base, final List<Lock> lockList) {
         this.base = base;
         this.lockList = lockList;
@@ -72,21 +71,22 @@ public class LockService {
      * – attól egy szóközzel elválasztva – annak értékelése olvasható.
      * -   „hibás hossz”, ha a felhasználótól a 2. feladatban bekért kódszám és a sorbeli kódszám hossza eltér;
      * -   „hibás kódszám”, ha a felhasználótól a 2. feladatban bekért kódszám és a sorbeli kódszám hossza egyezik,
-     * de nem összetartozók;
+     *      de nem összetartozók;
      * -   „sikeres”, ha a két kódszám egyenértékű.
      *
      * @return
      */
     public List<String> getDetailedAttempt() {
-        return lockList.stream().map(this::createAnswer).collect(Collectors.toList());
+        return lockList.stream().map(this::addAttempt).collect(Collectors.toList());
     }
 
-    private String createAnswer(final Lock lock) {
+    private String addAttempt(final Lock lock) {
         String code = lock.getCode();
-        String answer = !lockOpen.lengthCheck(code)
-                ? "hibás hossz"
-                : !lockOpen.open(code) ? "hibás kódszám" : "sikeres";
-        return code + " " + answer;
+        return code + " " + createResult(code);
+    }
+
+    private String createResult(String code) {
+        return !lockOpen.lengthCheck(code) ? "hibás hossz" : !lockOpen.open(code) ? "hibás kódszám" : "sikeres";
     }
 
 }
