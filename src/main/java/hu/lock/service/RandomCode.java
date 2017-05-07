@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * @author Peter_Fazekas on 2017.05.07..
  */
-public class RandomCode {
+class RandomCode {
 
     private final Random random;
     private final List<Integer> options;

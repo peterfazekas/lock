@@ -28,6 +28,7 @@ public class LockService {
     /**
      * 3. feladat: Jelenítse meg a képernyőn, hogy mely kísérleteknél használták a nyitáshoz pontosan az
      * előző feladatban beolvasott kódszámot! A sorok számát egymástól pontosan egy szóközzel válassza el!
+     *
      * @return
      */
     public String successOpen() {
@@ -42,22 +43,23 @@ public class LockService {
     /**
      * 4. feladat: Adja meg, hogy melyik az első olyan próbálkozás, amely ismétlődő karaktert tartalmaz!
      * Ha nem volt ilyen, írja ki a „nem volt ismétlődő számjegy” üzenetet!
+     *
      * @return
      */
     public String getRecurrences() {
         Optional<Integer> first = lockList.stream()
                 .filter(Lock::hasRecurrence)
-                .map(i -> i.getId())
+                .map(Lock::getId)
                 .findFirst();
-        return first.isPresent()
-                ? "Az első ismétlődést tartalmazó próbálkozás sorszáma: " + first.get()
-                : "Nem volt ismétlődő számjegy";
+        return first.map(i -> "Az első ismétlődést tartalmazó próbálkozás sorszáma: " + i)
+                .orElse("Nem volt ismétlődő számjegy");
     }
 
     /**
      * 5. feladat: Állítson elő egy, a második feladatban beolvasottal egyező hosszúságú, véletlenszerű,
      * ismétlődés nélküli jelsorozatot, majd a mintának megfelelően jelenítse meg a hosszát és az
      * előállított kódszámot!
+     *
      * @return
      */
     public String getRandomCode() {
@@ -68,10 +70,11 @@ public class LockService {
     /**
      * 7. feladat: Állítsa elő a siker.txt fáljt, amelynek soraiban a nyitási próbálkozás kódszáma után
      * – attól egy szóközzel elválasztva – annak értékelése olvasható.
-     *      -   „hibás hossz”, ha a felhasználótól a 2. feladatban bekért kódszám és a sorbeli kódszám hossza eltér;
-     *      -   „hibás kódszám”, ha a felhasználótól a 2. feladatban bekért kódszám és a sorbeli kódszám hossza egyezik,
-     *          de nem összetartozók;
-     *      -   „sikeres”, ha a két kódszám egyenértékű.
+     * -   „hibás hossz”, ha a felhasználótól a 2. feladatban bekért kódszám és a sorbeli kódszám hossza eltér;
+     * -   „hibás kódszám”, ha a felhasználótól a 2. feladatban bekért kódszám és a sorbeli kódszám hossza egyezik,
+     * de nem összetartozók;
+     * -   „sikeres”, ha a két kódszám egyenértékű.
+     *
      * @return
      */
     public List<String> getDetailedAttempt() {

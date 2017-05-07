@@ -27,7 +27,7 @@ public class Lock {
     public boolean hasRecurrence() {
         boolean recurrence = false;
         for (Map.Entry<Integer, Integer> codeEntry : createMap().entrySet()) {
-            if(codeEntry.getValue() > 1) recurrence = true;
+            if (codeEntry.getValue() > 1) recurrence = true;
         }
         return recurrence;
     }
@@ -36,7 +36,7 @@ public class Lock {
         Map<Integer, Integer> codeMap = new TreeMap<>();
         for (int i = 0; i < code.length(); i++) {
             int key = Integer.parseInt(String.valueOf(code.charAt(i)));
-            int value = (!codeMap.containsKey(key) ? 0 : codeMap.get(key)) + 1 ;
+            int value = (codeMap.getOrDefault(key, 0)) + 1;
             codeMap.put(key, value);
         }
         return codeMap;

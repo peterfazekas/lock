@@ -4,15 +4,15 @@ import hu.lock.data.log.DataLogger;
 import hu.lock.data.log.FileLogger;
 import hu.lock.data.service.Data;
 import hu.lock.service.Console;
-import hu.lock.service.LockService;
 import hu.lock.service.LockFactory;
+import hu.lock.service.LockService;
 
 import java.util.Scanner;
 
 /**
  * @author Peter_Fazekas on 2017.05.07..
  */
-public class App {
+class App {
 
     private static final String INPUT = "ajto.txt";
     private static final String OUTPUT = "siker.txt";
@@ -21,7 +21,7 @@ public class App {
     private final Console console;
     private final DataLogger log;
 
-    public App() {
+    private App() {
         data = new Data();
         console = new Console(new Scanner(System.in));
         log = new FileLogger(OUTPUT);

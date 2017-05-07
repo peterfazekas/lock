@@ -22,10 +22,8 @@ public class CodeReader implements DataReader {
 
     public List<String> read() {
         List<String> lines = null;
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))){
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             lines = reader.lines().collect(Collectors.toList());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

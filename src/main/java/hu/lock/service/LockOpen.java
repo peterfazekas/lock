@@ -9,7 +9,7 @@ package hu.lock.service;
  * megállapítja, hogy ugyanazt a zárat nyitják-e! (A 239451 és a 017239 ugyanazt a zárat nyitja.)
  * A függvény két, legfeljebb 10 számjegyből álló karaktersorozathoz egy logikai értéket rendel.
  */
-public class LockOpen {
+class LockOpen {
 
     private static final int TEN = 10;
     private final String base;
@@ -19,7 +19,7 @@ public class LockOpen {
     }
 
     public boolean open(final String code) {
-        return lengthCheck(code) ? isMatch(code, codeDistance(code)) : false;
+        return lengthCheck(code) && isMatch(code, codeDistance(code));
     }
 
     public boolean lengthCheck(final String code) {
@@ -29,7 +29,7 @@ public class LockOpen {
     private boolean isMatch(final String code, final int difference) {
         boolean match = true;
         for (int i = 1; i < base.length(); i++) {
-            match = !isMatch(code, difference, i) ? false : match;
+            match = isMatch(code, difference, i) && match;
         }
         return match;
     }
