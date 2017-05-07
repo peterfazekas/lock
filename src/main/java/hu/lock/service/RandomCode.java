@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Random code generator.
  * @author Peter_Fazekas on 2017.05.07..
  */
 class RandomCode {

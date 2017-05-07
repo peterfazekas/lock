@@ -1,13 +1,17 @@
 package hu.lock.service;
 
 /**
- * 6. feladat: Készítsen függvényt nyit néven az alábbi algoritmus alapján, amely a neki átadott két kódszámról
- * megállapítja, hogy ugyanazt a zárat nyitják-e! (A 239451 és a 017239 ugyanazt a zárat nyitja.)
- * A függvény két, legfeljebb 10 számjegyből álló karaktersorozathoz egy logikai értéket rendel.
+ * Service class which can decide whether a code combination is able to open the lock
  *
  * @author Peter_Fazekas on 2017.05.07..
  */
 class LockOpen {
+
+    /**
+     * 6. feladat: Készítsen függvényt nyit néven az alábbi algoritmus alapján, amely a neki átadott két
+     * kódszámról megállapítja, hogy ugyanazt a zárat nyitják-e! (A 239451 és a 017239 ugyanazt a zárat nyitja.)
+     * A függvény két, legfeljebb 10 számjegyből álló karaktersorozathoz egy logikai értéket rendel.
+     */
 
     private static final int TEN = 10;
     private final String base;

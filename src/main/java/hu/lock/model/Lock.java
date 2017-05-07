@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * DTO for {@link Lock}
  * @author Peter_Fazekas on 2017.05.07..
  */
 public class Lock {

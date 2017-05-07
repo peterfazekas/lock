@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import java.util.List;
 
 /**
+ * Implementation of {@link DataLogger}.
+ * Write text content to text file represent by fileName;
  * @author Peter_Fazekas on 2017.05.07..
  */
 public class FileLogger implements DataLogger {

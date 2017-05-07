@@ -10,6 +10,7 @@ import hu.lock.service.LockService;
 import java.util.Scanner;
 
 /**
+ * Lock - Main method.
  * @author Peter_Fazekas on 2017.05.07..
  */
 class App {
@@ -35,10 +36,10 @@ class App {
     private void println() {
         System.out.print("2. feladat: Adja meg mi nyitja a zárat: ");
         String code = console.readLine();
-        LockService lock = LockFactory.createLock(code, data.getData(INPUT));
-        System.out.println("3. feladat: A nyitó kódszámok sorai: " + lock.successOpen());
-        System.out.println("4. feladat: " + lock.getRecurrences());
+        LockService lock = LockFactory.createLockService(code, data.getData(INPUT));
+        System.out.println("3. feladat: A nyitó kódszámok sorai: " + lock.getSameLockIds());
+        System.out.println("4. feladat: " + lock.getFirstRecurrence());
         System.out.println("5. feladat: " + lock.getRandomCode());
-        log.printAll(lock.getDetailedAttempt());
+        log.printAll(lock.getDetailedAttemptList());
     }
 }

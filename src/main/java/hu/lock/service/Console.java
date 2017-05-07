@@ -3,6 +3,7 @@ package hu.lock.service;
 import java.util.Scanner;
 
 /**
+ * Read String input from Console.
  * @author Peter_Fazekas on 2017.05.07..
  */
 

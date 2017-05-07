@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * File Read API for List of {@link Lock}
  * @author Peter_Fazekas on 2017.05.07..
  */
 public class Data {

@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
+ * Service class for list of {@link Lock}.
  * @author Peter_Fazekas on 2017.05.07..
  */
 public class LockService {
@@ -30,7 +31,7 @@ public class LockService {
      *
      * @return
      */
-    public String successOpen() {
+    public String getSameLockIds() {
         StringBuilder sb = new StringBuilder();
         lockList.stream()
                 .filter(i -> i.getCode().equals(base))
@@ -45,7 +46,7 @@ public class LockService {
      *
      * @return
      */
-    public String getRecurrences() {
+    public String getFirstRecurrence() {
         Optional<Integer> first = lockList.stream()
                 .filter(Lock::hasRecurrence)
                 .map(Lock::getId)
@@ -76,16 +77,16 @@ public class LockService {
      *
      * @return
      */
-    public List<String> getDetailedAttempt() {
-        return lockList.stream().map(this::addAttempt).collect(Collectors.toList());
+    public List<String> getDetailedAttemptList() {
+        return lockList.stream().map(this::addDetailedAttempt).collect(Collectors.toList());
     }
 
-    private String addAttempt(final Lock lock) {
+    private String addDetailedAttempt(final Lock lock) {
         String code = lock.getCode();
-        return code + " " + createResult(code);
+        return code + " " + getAttemptResult(code);
     }
 
-    private String createResult(String code) {
+    private String getAttemptResult(String code) {
         return !lockOpen.lengthCheck(code) ? "hibás hossz" : !lockOpen.open(code) ? "hibás kódszám" : "sikeres";
     }
 

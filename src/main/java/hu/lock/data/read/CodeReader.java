@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * Implementation of {@link DataReader}.
+ * Reads text from fileName to List of String.
  * @author Peter_Fazekas on 2017.05.07..
  */
 public class CodeReader implements DataReader {
